@@ -11,7 +11,9 @@ defmodule GenCounter.Application do
     children = [
       worker(GenCounter.Producer, [0]),
       worker(GenCounter.ProducerConsumer, []),
-      worker(GenCounter.Consumer, [])
+      worker(GenCounter.Consumer, [], id: :a),
+      worker(GenCounter.Consumer, [], id: :b),
+      worker(GenCounter.Consumer, [], id: :c)
     ]
 
     opts = [strategy: :one_for_one, name: GenCounter.Supervisor]
