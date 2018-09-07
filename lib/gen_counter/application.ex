@@ -7,7 +7,7 @@ defmodule GenCounter.Application do
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-
+    # Three consumers for an infinite counter loop
     children = [
       worker(GenCounter.Producer, [0]),
       worker(GenCounter.ProducerConsumer, []),
