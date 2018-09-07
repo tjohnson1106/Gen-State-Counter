@@ -6,14 +6,14 @@ defmodule GenCounter.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
+    import Supervisor.Spec, warn: false
+
     children = [
-      # Starts a worker by calling: GenCounter.Worker.start_link(arg)
-      # {GenCounter.Worker, arg},
+      worker(GenCounter.Producer, [0]),
+      worker(GenCounter.ProducerConsumer, []),
+      worker(GenCounter.Consumer, [])
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: GenCounter.Supervisor]
     Supervisor.start_link(children, opts)
   end

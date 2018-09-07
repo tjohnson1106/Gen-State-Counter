@@ -2,6 +2,7 @@
              [{applications,[kernel,stdlib,elixir,logger,gen_stage]},
               {description,"gen_counter"},
               {modules,['Elixir.GenCounter','Elixir.GenCounter.Application',
+                        'Elixir.GenCounter.Consumer',
                         'Elixir.GenCounter.Producer',
                         'Elixir.GenCounter.ProducerConsumer']},
               {registered,[]},
